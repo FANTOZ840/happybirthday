@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>birthday</title>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #f6e6ff 100%);
+            height: 100vh;
+            width: 100%;
+            border-radius: 40px;
+            font-family: arial;
+            overflow-y: auto;
+        }
+
+        .main {
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid red;
+            border-top: 4px solid red;
+            border-radius: 60px;
+            box-shadow: 0 10px 20px purple;
+            width: 100%;
+            height: 70vh;
+        }
+
+        .minor {
+            display: flex;
+            flex-direction: column;
+            height: 83vh;
+            margin-left: 2px;
+            margin-right: 50px;
+            border-radius: 20px;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #day {
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 0 5px 10px purple;
+            color: red;
+        }
+
+        #panel {
+            padding: 10px;
+            margin: 20px;
+            margin-top: 50px;
+            border: 1px solid red;
+            border-top: 4px solid red;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px purple;
+        }
+
+        button {
+            border-radius: 30px;
+            background-color: red;
+            height: 50px;
+            box-shadow: 0 20px 30px green;
+            margin-top: 30px;
+            width: 70%;
+        }
+
+        button:hover {
+            color: pink;
+            background-color: blue;
+        }
+
+        #balloons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .ballon {
+            position: absolute;
+            bottom: -80px;
+            font-size: 50px;
+        }
+
+        footer {
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid green;
+            height: 83vh;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .memories {
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        #images {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 10px;
+            justify-content: center;
+            align-items: center;
+            background-color: blue;
+            border-radius: 20px;
+            margin-top: 20px;
+            border: 2px solid green;
+            margin-top: 20px;
+            height: fit-content;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        img {
+            height: 250px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                width: 100%;
+                min-height: 100vh;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 10px;
+            }
+
+            /* TOP SECTION */
+            .minor {
+                order: 1;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            footer {
+                width: 100%;
+                order: 2;
+                margin: 0;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* PANEL INSIDE MINOR */
+            #panel {
+                width: 100%;
+                max-width: 400px;
+                margin: 20px 0;
+                padding: 15px;
+                box-sizing: border-box;
+            }
+
+            /* MAIN GOES UNDER MINOR */
+            .main {
+                order: 2;
+                width: 100%;
+                height: auto;
+                margin: 10px 0;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* CARD INSIDE MAIN */
+            .card {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                min-height: 250px;
+                margin: 10px 0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            #day {
+                text-align: center;
+                font-size: 22px;
+            }
+
+            #birth {
+                text-align: center;
+                font-size: 28px;
+            }
+
+            #friend {
+                text-align: center;
+                line-height: 1.5;
+            }
+
+            button {
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+    </style>
+
+    <body>
+        <div id="balloons"></div>
+        <div class="minor" style="background-color: white;">
+            <h id="day">happy happy birthday queen</h>
+            <div id="panel">
+                <h3 id="title">My favourite Troublemaker🤣💖💋</h3>
+                <p id="message"> Today is your day!<br />From the first day we met,<br /> you turned normal days into
+                    funny stories.<br /> You are that friend who laughs too loud,cares too much,<br />and makes
+                    everything better just by being there. </p>
+            </div>
+            <button id="next">next page</button>
+            <button id="prev">prev-</button>
+        </div>
+        <section class="main">
+            <h1 id="birth">HAPPY Birthday</h1>
+            <div class="card">
+                <P id="friend">wishing you a day filled with<br /> happiness and joy<br />you are such an amazing
+                    friend! </P>
+                <button id="surprise">surprise</button>
+            </div>
+        </section>
+        <footer>
+            <button id="memories">memories</button>
+            <div id="images">
+                <img src="images/us-7.JPG">
+                <img src="images/us-6.JPG">
+                <img src="images/us-4.jpg">
+                <img src="images/us-3.jpg">
+                <img src="images/us-2.jpg">
+                <img src="images/us-1.jpg">
+                <img src="images/jojo-4.jpg">
+                <img src="images/jojo-3.jpg">
+            </div>
+        </footer>
+        <script>let birth = document.getElementById("birth");
+            let friend = document.getElementById("friend");
+            let button = document.getElementById("surprise");
+
+            button.onclick = function () {
+                birth.textContent = "Fanto's favourite🎁🎈";
+                friend.textContent = "I love you my 😜💖 you have been good to me.I really wish you a happy happy birthday ,joyfull one enjoy to your fullest ";
+            }
+            let minor = document.getElementsByClassName("minor");
+            let day = document.getElementById("day");
+            let panel = document.getElementById("panel");
+            let title = document.getElementById("title");
+            let message = document.getElementById("message");
+            let next = document.getElementById("next");
+            let prev = document.getElementById("prev");
+
+            let page = 1;
+
+            prev.onclick = function () {
+                page = page - 1;
+                if (page == 1) {
+                    title.textContent = "My favourite Troublemaker🤣💖💋";
+                    message.textContent = "Today is your day! From the first day we met, you turned normal days into funny stories.You are that friend who laughs too loud,cares too much,and makes everything better just by being there.";
+                    prev.textContent = "none";
+                    next.textContent = "next";
+
+                }
+                else if (page == 2) {
+                    message.textContent = "Once upon a time .i met a girl who was supposed to be just a friend.But she became family.She became my person.She became the one i can't imagine not annoying for the rest of my life.That's you.You are not just a friend,you are a blessing wrapped in laughter.Happy Birthday! May your phone never hang,may your cake never finish👌😘,and may your dreams all come true this year.I love youuuuuuu so much muaaaaaah💋❤😉";
+                    title.textContent = "Hellooo,wakadede😊💖";
+
+                }
+            }
+
+
+
+            next.onclick = function () {
+                page = page + 1;
+                if (page == 2) {
+
+                    next.textContent = "next page"
+                    message.textContent = "Once upon a time .i met a girl who was supposed to be just a friend.But she became family.She became my person.She became the one i can't imagine not annoying for the rest of my life.That's you.You are not just a friend,you are a blessing wrapped in laughter.Happy Birthday! May your phone never hang,may your cake never finish👌😘,and may your dreams all come true this year.I love youuuuuuu so much muaaaaaah💋❤😉";
+                    title.textContent = "Hellooo,wakadede😊💖";
+                }
+
+
+                else if (page == 3) {
+                    message.textContent = "My wish for you is simple,May your new year be filled with happiness,peace,success,and everything your heart desires.And hopefully many more beautiful moments together 😊💖💖💋,Happy birthday once again,my 💖 keep smiling,and keep shining,and never forget how special you are to me.With all my love Yours";
+                    next.textContent = "cool🎁🎈";
+                    title.textContent = "Happy birthday beatiful😜🌹";
+                    prev.textContent = "prev";
+                }
+
+
+
+            }
+
+            function createBalloon() {
+                let balloon = document.createElement("div");
+                balloon.className = "balloon";
+                balloon.textContent = "🎈";
+                balloon.style.left = Math.random() * 100 + "%";
+
+                document.getElementById("balloons").appendChild(balloon);
+
+                let position = -80;
+                let move = setInterval(function () {
+                    position += 2;
+                    balloon.style.bottom = position + "px";
+
+                    if (position > window.innerHeight + 100) {
+                        clearInterval(move);
+                        balloon.remove();
+                    }
+
+
+                }, 20);
+            }
+            setInterval(createBalloon, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+
+</html>
